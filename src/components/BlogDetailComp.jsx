@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { Button } from "./ui/button";
 import CommentSection from "./CommentSection";
+import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
 
 const BlogDetailComp = () => {
   const [like, setLike] = useState(false);
+
+  const auth = true
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
@@ -20,9 +24,14 @@ const BlogDetailComp = () => {
               <p>Author Name</p>
               <p>Created At</p>
             </div>
+            <div className="flex items-center justify-between">
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               The Catcher in the Rye
             </h1>
+            <Link to={`/edit/blog/id`}>
+            <FaEdit size={20} className="text-green-500"/>
+            </Link>
+            </div>
             <p className="leading-relaxed">
               Fam locavore kickstarter distillery. Mixtape chillwave tumeric
               sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo

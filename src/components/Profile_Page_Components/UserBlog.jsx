@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,10 +6,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarImage } from "../ui/avatar";
+} from "../ui/card";
+import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaEdit } from "react-icons/fa";
+import { Button } from "../ui/button";
+import { Avatar, AvatarImage } from "../ui/avatar";
 
 const blogCategories = [
   {
@@ -181,26 +181,32 @@ const blogCategories = [
     date: "12/12/2024",
   },
 ];
-const auth = true;
+const auth = true
 
-const BlogComponent = () => {
+const UserBlog = () => {
   return (
-    <div className="flex flex-col items-center gap-3 py-10 bg-white">
-      <h1 className="font-bold text-2xl sm:text-3xl mb-2">Latest Blogs</h1>
-      <div className="w-full px-5 sm:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {blogCategories.slice(0, 6).map((card, ind) => {
-          return (
-            <Card key={ind} className="p-0">
+    <div className="mt-10">
+      <h1 className="text-center mb-4 font-bold text-xl sm:text-2xl text-blue-500">
+        My Blogs
+      </h1>
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {blogCategories.length > 0 ? (
+          blogCategories.map((card) => (
+            <Card
+              key={card.id}
+              className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
               <CardHeader className="p-0">
                 <div>
                   <img
                     src={card.image}
-                    className="w-full h-64 object-cover rounded-t-md"
-                    alt=""
+                    className="w-full h-56 object-cover rounded-t-md"
+                    alt="Blog Thumbnail"
                   />
                 </div>
               </CardHeader>
-              <CardContent className="flex py-4 flex-col gap-2">
+
+              <CardContent className="flex flex-col gap-2 py-4 px-4">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-xl font-bold">
                     {card.title}
@@ -213,39 +219,41 @@ const BlogComponent = () => {
                     ""
                   )}
                 </div>
-                <CardDescription className="text-gray-500 text-md line-clamp-2">
+                <CardDescription className="text-gray-600 text-sm line-clamp-3">
                   {card.description}
                 </CardDescription>
-                <div className="flex items-center flex-col my-2">
-                  <Link className="self-end" to={"/blog-detail/:id"}>
+                <div className="mt-4 flex items-center justify-end">
+                  <Link className="inline-block" to={`/blog-detail/${card.id}`}>
                     <Button>Read More</Button>
                   </Link>
                 </div>
               </CardContent>
-              <CardFooter>
+
+              <CardFooter className="py-4 px-4 bg-gray-50">
                 <div className="w-full flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3">
                     <Avatar className="w-10 h-10">
-                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarImage src={card.image} />
                     </Avatar>
-                    <h1 className="font-semibold text-gray-600">
-                      {card.author}
-                    </h1>
+                    <h1 className="font-medium text-gray-700">{card.author}</h1>
                   </div>
-                  <h4 className="text-gray-500 font-serif">{card.date}</h4>
+                  <h4 className="text-sm text-gray-500 font-serif">
+                    {card.date}
+                  </h4>
                 </div>
               </CardFooter>
             </Card>
-          );
-        })}
+          ))
+        ) : (
+          <div className="w-full">
+            <h1 className="text-center text-gray-400 font-semibold text-xl sm:text-2xl">
+              No Blogs Available
+            </h1>
+          </div>
+        )}
       </div>
-      <Link to={"/blogs"}>
-        <Button className="mt-10 px-10 font-bold flex items-center">
-          See More <FaArrowRight />{" "}
-        </Button>
-      </Link>
     </div>
   );
 };
 
-export default BlogComponent;
+export default UserBlog;

@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { FaEdit } from "react-icons/fa";
 
 const blogCategories = [
   {
@@ -188,17 +189,17 @@ const blogCategories = [
   },
 ];
 
+const auth = true;
+
 const BlogContent = () => {
   const [inputFilter, setInputFilter] = useState("");
 
-  // Filter blogs based on inputFilter (case-insensitive)
   const filteredData = blogCategories.filter((blog) =>
     blog.title.toLowerCase().includes(inputFilter.toLowerCase())
   );
 
   return (
     <div className="min-h-screen py-10 px-4 sm:px-16">
-      {/* Search Bar and Dropdown */}
       <div className="my-5 w-full flex items-center justify-between gap-4 flex-wrap py-4 px-3 rounded-lg">
         <div className="flex-1">
           <input
@@ -246,9 +247,18 @@ const BlogContent = () => {
               </CardHeader>
 
               <CardContent className="flex flex-col gap-2 py-4 px-4">
-                <CardTitle className="text-xl font-bold text-gray-800">
-                  {card.title}
-                </CardTitle>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-xl font-bold">
+                    {card.title}
+                  </CardTitle>
+                  {auth ? (
+                    <Link to={`/edit/blog/${card.id}`}>
+                      <FaEdit size={20} className="text-green-500" />
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                </div>
                 <CardDescription className="text-gray-600 text-sm line-clamp-3">
                   {card.description}
                 </CardDescription>
@@ -276,7 +286,9 @@ const BlogContent = () => {
           ))
         ) : (
           <div className="w-full">
-            <h1 className="text-center text-gray-400 font-semibold text-xl sm:text-2xl">No Blogs Available</h1>
+            <h1 className="text-center text-gray-400 font-semibold text-xl sm:text-2xl">
+              No Blogs Available
+            </h1>
           </div>
         )}
       </div>

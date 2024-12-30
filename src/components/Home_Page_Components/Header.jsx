@@ -77,12 +77,14 @@ const Header = () => {
             <PopoverContent className="w-[180px] p-2">
               <div className="w-full">
                 <div>
-                  <Button
-                    variant="outline"
-                    className="w-full text-gray-500 hover:text-gray-600 border-none flex justify-start items-center gap-2"
-                  >
-                    <FaUser /> Profile
-                  </Button>
+                  <Link to={"/auth/profile"}>
+                    <Button
+                      variant="outline"
+                      className="w-full text-gray-500 hover:text-gray-600 border-none flex justify-start items-center gap-2"
+                    >
+                      <FaUser /> Profile
+                    </Button>
+                  </Link>
                 </div>
                 <div>
                   <Link to={"/create/blog"}>
