@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import UserBlog from "./UserBlog";
+import { Button } from "../ui/button";
 
 const ProfilePageComp = () => {
   return (
@@ -48,6 +49,9 @@ const ProfilePageComp = () => {
           <h1 className="text-blue-400 font-bold text-center sm:text-left">
             Post : <span className="text-gray-400 font-bold">4</span>
           </h1>
+          <div className="flex items-center justify-center sm:justify-end">
+            <Button className="bg-red-600 hover:bg-red-500">Logout</Button>
+          </div>
         </div>
       </div>
       <UserBlog/>
