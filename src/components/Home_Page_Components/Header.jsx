@@ -50,7 +50,6 @@ const Header = () => {
         </Link>
         <ul className="hidden sm:flex items-center gap-2">
           {lnk.map((item, ind) => {
-
             return (
               <Link key={ind} to={item.nav}>
                 <li className="font-semibold text-sm hover:underline hover:text-blue-500 hover:pb-1">
@@ -86,12 +85,14 @@ const Header = () => {
                   </Button>
                 </div>
                 <div>
-                  <Button
-                    variant="outline"
-                    className="w-full text-gray-500 hover:text-gray-600 border-none flex justify-start items-center gap-2"
-                  >
-                    <FaEdit /> Create Blog
-                  </Button>
+                  <Link to={"/create/blog"}>
+                    <Button
+                      variant="outline"
+                      className="w-full text-gray-500 hover:text-gray-600 border-none flex justify-start items-center gap-2"
+                    >
+                      <FaEdit /> Create Blog
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </PopoverContent>
