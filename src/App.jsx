@@ -11,6 +11,10 @@ import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfile from "./pages/EditProfile";
+import AdminDashboard from "./Admin/pages/adminDashboard";
+import Dashboard from "./Admin/pages/Dashboard";
+import UserPage from "./Admin/pages/UserPage";
+import PostPage from "./Admin/pages/PostPage";
 
 const App = () => {
   return (
@@ -23,10 +27,16 @@ const App = () => {
         <Route path="/blog-detail/:id" element={<BlogDetail />} />
         <Route path="/create/blog" element={<CreateBlog />} />
         <Route path="/edit/blog/:id" element={<EditBlog />} />
-        <Route path="/auth/profile" element={<ProfilePage/>} />
-        <Route path="/auth/profile/edit/:id" element={<EditProfile/>} />
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/auth/profile" element={<ProfilePage />} />
+        <Route path="/auth/profile/edit/:id" element={<EditProfile />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        // Admin Route
+        <Route path="/admin" element={<AdminDashboard />}>
+          <Route index element={<Dashboard />} />
+          <Route path="/admin/user" element={<UserPage />} />
+          <Route path="/admin/post" element={<PostPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

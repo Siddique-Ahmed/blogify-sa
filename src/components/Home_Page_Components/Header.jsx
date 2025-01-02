@@ -27,7 +27,7 @@ const lnk = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth = true;
+  const auth = false;
 
   return (
     <div className="w-full fixed top-0 left-0 z-50 bg-white p-3 px-4 sm:px-14 flex items-center justify-between gap-2">
@@ -48,20 +48,20 @@ const Header = () => {
             Blogify
           </h1>
         </Link>
-        <ul className="hidden sm:flex items-center gap-2">
-          {lnk.map((item, ind) => {
-            return (
-              <Link key={ind} to={item.nav}>
-                <li className="font-semibold text-sm hover:underline hover:text-blue-500 hover:pb-1">
-                  {item.name}
-                </li>
-              </Link>
-            );
-          })}
-        </ul>
+          <ul className="hidden sm:flex items-center gap-2">
+            {lnk.map((item, ind) => {
+              return (
+                <Link key={ind} to={item.nav}>
+                  <li className="font-semibold text-sm hover:underline hover:text-blue-500 hover:pb-1">
+                    {item.name}
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
       </div>
       <div>
-        {auth ? (
+        {auth  ? (
           <Popover>
             <PopoverTrigger>
               <div className="flex items-center gap-2">
@@ -101,9 +101,9 @@ const Header = () => {
           </Popover>
         ) : (
           <div className="flex items-center gap-2">
-            <Link to={"/login"}>
-              <Button>Login</Button>
-            </Link>
+              <Link to={"/login"}>
+                <Button>Login</Button>
+              </Link>
           </div>
         )}
       </div>
