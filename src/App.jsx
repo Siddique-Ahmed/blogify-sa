@@ -11,7 +11,7 @@ import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfile from "./pages/EditProfile";
-import AdminDashboard from "./Admin/pages/adminDashboard";
+import AdminDashboard from "./Admin/pages/AdminDashboard";
 import Dashboard from "./Admin/pages/Dashboard";
 import UserPage from "./Admin/pages/UserPage";
 import PostPage from "./Admin/pages/PostPage";
